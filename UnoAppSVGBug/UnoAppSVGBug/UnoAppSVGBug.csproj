@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net7.0;net7.0-ios;net7.0-android</TargetFrameworks>
+
+		<!-- Ensures the .xr.xml files are generated in a proper layout folder -->
+		<GenerateLibraryLayout>true</GenerateLibraryLayout>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Svg.Skia" Version="0.5.18" />
+		<PackageReference Include="Uno.Dsp.Tasks" Version="1.0.1" />
+		<PackageReference Include="Uno.WinUI" Version="4.8.39" />
+		<PackageReference Include="Uno.Resizetizer" Version="1.0.4" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+		<PackageReference Include="Uno.Material.WinUI" Version="2.5.3" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+		<PackageReference Include="Uno.WinUI.Svg" Version="4.8.39" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Assets\**" />
+		<Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
+		<Compile Update="**\*.xaml.cs">
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
+		<PRIResource Include="**\*.resw" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<UnoDspImportColors Include="Styles\*.zip" Generator="Xaml" />
+		<UnoImage Include="Assets\**\*.svg" />
+		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Assets\4d.svg" />
+	  <None Remove="Assets\rainbowflag.svg" />
+	  <None Remove="Assets\UnoLogo.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <UnoImage Remove="Assets\4d.svg" />
+	  <UnoImage Remove="Assets\rainbowflag.svg" />
+	  <UnoImage Remove="Assets\UnoLogo.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="Assets\4d.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="Assets\UnoLogo.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+</Project>
